@@ -1,5 +1,7 @@
 package depot.system;
 
+//Class for Parcel for the Depot System assignment 2.
+
 public class Parcel {
     private String parcelID;
     private String dimensions; // length x width x height
@@ -73,6 +75,8 @@ public class Parcel {
         } else {
             System.out.println("Invalid status. Use 'Waiting' or ' Collected'.");
         }
+
+        //add discount method later!
     }
 
 }
