@@ -7,9 +7,17 @@ public class Customer {
     private String name;
     private String parcelID;
 
-    //constructor
-
+    //constructor for Customer class with validation
     public Customer (int sequenceNumber, String name, String parcelID){
+        if (sequenceNumber <= 0) {
+            throw new IllegalArgumentException("Sequence number must be positive.");
+        }
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+        if (parcelID == null || parcelID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Parcel ID cannot be null or empty.");
+        }
         this.sequenceNumber = sequenceNumber;
         this.name = name;
         this.parcelID = parcelID;
@@ -29,16 +37,36 @@ public class Customer {
     }
 
     public void setSequenceNumber(int sequenceNumber) {
+        if (sequenceNumber < 0) {
+            throw new IllegalArgumentException("Sequence number cannot be negative.");
+        }
         this.sequenceNumber = sequenceNumber;
     }
 
+
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
         this.name = name;
     }
 
     public void setParcelID(String parcelID) {
+        if (parcelID == null || parcelID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Parcel ID cannot be null or empty.");
+        }
         this.parcelID = parcelID;
     }
 
-    //methods to be added later
+    // TODO: Add methods for customer-specific logic
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "sequenceNumber=" + sequenceNumber +
+                ", name='" + name + '\'' +
+                ", parcelID='" + parcelID + '\'' +
+                '}';
+    }
+
 }

@@ -13,7 +13,14 @@ public class ParcelMap {
     public Map<String, Parcel> getParcels(){
         return parcels;
     }
+
+
     //methods to be added later
+    @Override
+    public String toString() {
+        return parcels.toString();
+    }
+
 }
 
 

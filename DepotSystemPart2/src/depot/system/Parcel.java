@@ -12,6 +12,21 @@ public class Parcel {
     //constructor
 
     public Parcel (String parcelID, String dimension, double weight, int daysInDepot, String status){
+        if (parcelID == null || parcelID.trim().isEmpty()){
+            throw new IllegalArgumentException("ID Cannot be empty");
+        }
+        if (dimensions == null || !validateDimensions(dimensions)) {
+            throw new IllegalArgumentException("Invalid dimensions. Use the format 'length x width x height'.");
+        }
+        if (weight < 0){
+            throw new IllegalArgumentException(("Parcel can't have a negative weight"));
+        }
+        if (daysInDepot < 0){
+            throw new IllegalArgumentException(("Days in depot can't be negative"));
+        }
+        if (!status.equals("Waiting") && !status.equals("Collected")){
+            throw new IllegalArgumentException("Status must be 'Waiting' or 'Collected'");
+        }
         this.parcelID = parcelID;
         this.dimensions = dimension;
         this.weight = weight;
@@ -26,6 +41,9 @@ public class Parcel {
     }
 
     public void setParcelID(String parcelID) {
+        if (parcelID == null || parcelID.trim().isEmpty()){
+            throw new IllegalArgumentException("ID Cannot be empty");
+        }
         this.parcelID = parcelID;
     }
 
@@ -34,6 +52,9 @@ public class Parcel {
     }
 
     public void setDimensions(String dimensions) {
+        if (!validateDimensions(dimensions)){
+            throw new IllegalArgumentException(("Dimensions mus be in the format 'Length x Width x Height."));
+        }
         this.dimensions = dimensions;
     }
 
@@ -42,6 +63,9 @@ public class Parcel {
     }
 
     public void setWeight(double weight) {
+        if (weight < 0){
+            throw new IllegalArgumentException(("Parcel can't have a negative weight"));
+        }
         this.weight = weight;
     }
 
@@ -50,6 +74,9 @@ public class Parcel {
     }
 
     public void setDaysInDepot(int daysInDepot) {
+        if (daysInDepot < 0){
+            throw new IllegalArgumentException(("Days in depot can't be negative"));
+        }
         this.daysInDepot = daysInDepot;
     }
 
@@ -58,25 +85,27 @@ public class Parcel {
     }
 
     public void setStatus(String status) {
+        if (!status.equals("Waiting") && !status.equals("Collected")){
+            throw new IllegalArgumentException("Status must be 'Waiting' or 'Collected'");
+        }
         this.status = status;
     }
 
-    //methods, adjust later.
-    public double calculateFee(){
-        double baseFee = 5.0; //base for all parcel, double check assignment.
-        double weightFee = weight * 0.5; //Also check assignment for details later.
-        double storageFee = daysInDepot * 0.2; //once again check assignment brief to confirm any numbers here
-        return baseFee + weightFee + storageFee;
+    // Helper method to validate dimensions
+    private boolean validateDimensions(String dimensions) {
+        boolean matches = dimensions.matches("\\d+ x \\d+ x \\d+");
+        return matches;
     }
-
-    public void updateStatus(String newStatus){
-        if (newStatus.equals("Waiting") || newStatus.equals("Collected")){
-            this.status = newStatus;
-        } else {
-            System.out.println("Invalid status. Use 'Waiting' or ' Collected'.");
-        }
-
-        //add discount method later!
+    // Override toString for debugging
+    @Override
+    public String toString() {
+        return "Parcel{" +
+                "parcelID='" + parcelID + '\'' +
+                ", dimensions='" + dimensions + '\'' +
+                ", weight=" + weight +
+                ", daysInDepot=" + daysInDepot +
+                ", status='" + status + '\'' +
+                '}';
     }
 
 }

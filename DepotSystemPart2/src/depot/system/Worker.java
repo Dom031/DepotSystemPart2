@@ -1,14 +1,21 @@
 package depot.system;
 
-//Class for the Worker in the Depot System Assignment 2.
-
+// Class for the Worker in the Depot System Assignment 2.
 public class Worker {
     private String workerID;
     private String name;
 
-    //Constructors
-
-    public Worker(String workerID, String name){
+    // Constructor with validation
+    public Worker(String workerID, String name) {
+        if (workerID == null || workerID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Worker ID cannot be null or empty.");
+        }
+        if (!workerID.matches("W\\d+")) { // Example: Worker ID should start with 'W' followed by digits
+            throw new IllegalArgumentException("Worker ID must start with 'W' followed by digits.");
+        }
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
         this.workerID = workerID;
         this.name = name;
     }
@@ -18,16 +25,26 @@ public class Worker {
         return workerID;
     }
 
+    public void setWorkerID(String workerID) {
+        if (workerID == null || workerID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Worker ID cannot be null or empty.");
+        }
+        if (!workerID.matches("W\\d+")) {
+            throw new IllegalArgumentException("Worker ID must start with 'W' followed by digits.");
+        }
+        this.workerID = workerID;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setWorkerID(String workerID) {
-        this.workerID = workerID;
-    }
-
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
         this.name = name;
     }
-    //methods to be added later
+
+    // Placeholder for methods to be added later
 }

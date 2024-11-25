@@ -1,31 +1,38 @@
 package depot.system;
 
 public class Log {
-    private  StringBuilder logEntries; //To store log messages
-    private static Log instance; // singleton instance as requested on the assignment brief
+    private StringBuilder logEntries; // To store log messages
+    private static Log instance; // Singleton instance
 
-    //private constructor for singleton
-    private Log(){
+    // Private constructor for singleton
+    private Log() {
         this.logEntries = new StringBuilder();
     }
 
-    //public method to get the single instance of log
-    public static Log getInstance(){
-        if (instance == null){
+    // Public method to get the single instance of Log
+    public static Log getInstance() {
+        if (instance == null) {
             instance = new Log();
         }
         return instance;
     }
 
-    //getter for log entries if needed, not sure yet.
-    public StringBuilder getLogEntries(){
-        return LogEntries;
+    // Method to add log entries
+    public void addLogEntry(String entry) {
+        if (entry == null || entry.trim().isEmpty()){
+            throw new IllegalArgumentException("Log entry cannot be null or empty.");
+        }
+        logEntries.append(entry).append("\n");
     }
 
-    public void setLogEntries(StringBuilder logEntries) {
-        this.logEntries = logEntries;
+    // Getter for log entries
+    public String getLogEntries() {
+        return logEntries.toString();
     }
-    //methods to be added later
+
+    // Override toString to display logs
+    @Override
+    public String toString() {
+        return logEntries.toString();
+    }
 }
-
-
