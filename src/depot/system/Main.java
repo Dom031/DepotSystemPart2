@@ -19,13 +19,16 @@ public class Main {
         manager.readCustomers(customersFilePath);
 
         // Process all customers in the queue
+        Worker worker = new Worker("W001", "John");
         while (!customerQueue.isEmpty()) {
             Customer customer = customerQueue.dequeueCustomer();
-            manager.processCustomer(customer);
+            worker.processCustomer(customer, parcelMap, log); // Pass parcelMap and log
         }
 
-        // Print all log entries
-        System.out.println("Log entries:");
-        System.out.println(log.getLogEntries());
+        // After processing customers, print collected parcels
+        System.out.println("Collected Parcels:");
+        for (Parcel parcel : parcelMap.getCollectedParcels()) {
+            System.out.println(parcel);
+        }
     }
 }
