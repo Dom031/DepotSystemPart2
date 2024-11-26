@@ -4,39 +4,25 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Depot System - Assignment Part 2");
 
-        // Initialize some sample data for testing
-        try {
-            // Create Customer objects
-            Customer customer1 = new Customer(1, "John Doe", "X123");
-            Customer customer2 = new Customer(2, "Jane Smith", "X456");
+        // Initialize required objects
+        QueueOfCustomer customerQueue = new QueueOfCustomer();
+        ParcelMap parcelMap = new ParcelMap();
+        Log log = Log.getInstance();
+        Manager manager = new Manager(customerQueue, parcelMap, log);
 
-            // Create Parcel objects
-            Parcel parcel1 = new Parcel("X123", "10 x 5 x 2", 4.5, 3, "Waiting");
-            Parcel parcel2 = new Parcel("X456", "15 x 7 x 3", 6.0, 5, "Waiting");
+        // Path to the parcels CSV file (adjust the path if needed)
+        String parcelsFilePath = "resources/Parcels.csv";
 
-            // Create QueueOfCustomer and ParcelMap
-            QueueOfCustomer customerQueue = new QueueOfCustomer();
-            customerQueue.enqueueCustomer(customer1);
-            customerQueue.enqueueCustomer(customer2);
+        // Read parcels from the file
+        manager.readParcels(parcelsFilePath);
 
-            ParcelMap parcelMap = new ParcelMap();
-            parcelMap.getParcels().put(parcel1.getParcelID(), parcel1);
-            parcelMap.getParcels().put(parcel2.getParcelID(), parcel2);
+        // Print the loaded parcels to verify
+        System.out.println("Parcels loaded into ParcelMap:");
+        System.out.println(parcelMap.getParcels());
 
-            // Create Log instance (Singleton)
-            Log log = Log.getInstance();
-            log.addLogEntry("System initialized.");
-
-            // Create Manager object
-            Manager manager = new Manager(customerQueue, parcelMap, log);
-
-            // Output initialized data
-            System.out.println("Customers in queue: " + customerQueue.getListOfCustomer());
-            System.out.println("Parcels in map: " + parcelMap.getParcels());
-            System.out.println("Log entries: " + log.getLogEntries());
-
-        } catch (Exception e) {
-            System.err.println("An error occurred: " + e.getMessage());
-        }
+        // Print log entries to verify logging
+        System.out.println("Log entries:");
+        System.out.println(log.getLogEntries());
     }
-}
+
+    }

@@ -53,7 +53,7 @@ public class Parcel {
 
     public void setDimensions(String dimensions) {
         if (!validateDimensions(dimensions)){
-            throw new IllegalArgumentException(("Dimensions mus be in the format 'Length x Width x Height."));
+            throw new IllegalArgumentException(("Dimensions must be in the format 'Length x Width x Height."));
         }
         this.dimensions = dimensions;
     }

@@ -57,7 +57,7 @@ public class Customer {
         }
         this.parcelID = parcelID;
     }
-    
+
     @Override
     public String toString() {
         return "Customer{" +
