@@ -57,9 +57,7 @@ public class Customer {
         }
         this.parcelID = parcelID;
     }
-
-    // TODO: Add methods for customer-specific logic
-
+    
     @Override
     public String toString() {
         return "Customer{" +

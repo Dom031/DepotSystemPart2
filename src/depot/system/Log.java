@@ -1,5 +1,6 @@
 package depot.system;
 
+
 public class Log {
     private StringBuilder logEntries; // To store log messages
     private static Log instance; // Singleton instance

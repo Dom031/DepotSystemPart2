@@ -1,5 +1,6 @@
 package depot.system;
 
+
 // Class to manage interactions between customer queue, parcel map and log.
 public class Manager {
     //References to customer queue, parcel map and log instance.
