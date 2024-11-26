@@ -11,7 +11,7 @@ public class Main {
         Manager manager = new Manager(customerQueue, parcelMap, log);
 
         // Path to the parcels CSV file (adjust the path if needed)
-        String parcelsFilePath = "resources/Parcels.csv";
+        String parcelsFilePath = "C:\\Users\\domin\\OneDrive\\Desktop\\DepotSystemPart2\\resources\\Parcels.csv";
 
         // Read parcels from the file
         manager.readParcels(parcelsFilePath);

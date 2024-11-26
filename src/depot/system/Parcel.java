@@ -11,28 +11,29 @@ public class Parcel {
 
     //constructor
 
-    public Parcel (String parcelID, String dimension, double weight, int daysInDepot, String status){
-        if (parcelID == null || parcelID.trim().isEmpty()){
-            throw new IllegalArgumentException("ID Cannot be empty");
+    public Parcel(String parcelID, String dimensions, double weight, int daysInDepot, String status) {
+        if (parcelID == null || parcelID.trim().isEmpty()) {
+            throw new IllegalArgumentException("ID cannot be empty");
         }
-        if (dimensions == null || !validateDimensions(dimensions)) {
+        if (dimensions == null || validateDimensions(dimensions)) {
             throw new IllegalArgumentException("Invalid dimensions. Use the format 'length x width x height'.");
         }
-        if (weight < 0){
-            throw new IllegalArgumentException(("Parcel can't have a negative weight"));
+        if (weight < 0) {
+            throw new IllegalArgumentException("Parcel can't have a negative weight");
         }
-        if (daysInDepot < 0){
-            throw new IllegalArgumentException(("Days in depot can't be negative"));
+        if (daysInDepot < 0) {
+            throw new IllegalArgumentException("Days in depot can't be negative");
         }
-        if (!status.equals("Waiting") && !status.equals("Collected")){
+        if (!status.equals("Waiting") && !status.equals("Collected")) {
             throw new IllegalArgumentException("Status must be 'Waiting' or 'Collected'");
         }
         this.parcelID = parcelID;
-        this.dimensions = dimension;
+        this.dimensions = dimensions;
         this.weight = weight;
         this.daysInDepot = daysInDepot;
         this.status = status;
     }
+
 
     //getters and setters
 
@@ -52,7 +53,7 @@ public class Parcel {
     }
 
     public void setDimensions(String dimensions) {
-        if (!validateDimensions(dimensions)){
+        if (validateDimensions(dimensions)){
             throw new IllegalArgumentException(("Dimensions must be in the format 'Length x Width x Height."));
         }
         this.dimensions = dimensions;
@@ -93,8 +94,7 @@ public class Parcel {
 
     // Helper method to validate dimensions
     private boolean validateDimensions(String dimensions) {
-        boolean matches = dimensions.matches("\\d+ x \\d+ x \\d+");
-        return matches;
+        return !dimensions.matches("\\d+ x \\d+ x \\d+");
     }
     // Override toString for debugging
     @Override

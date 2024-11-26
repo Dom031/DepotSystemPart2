@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 // Class to manage interactions between customer queue, parcel map and log.
 public class Manager {
@@ -41,33 +42,42 @@ public class Manager {
     }
 
 
-
-    public void readParcels(String filePath){
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
+    public void readParcels(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while ((line = br.readLine()) !=null){
-                String[] parts = line.split(",");
+            while ((line = br.readLine()) != null) {
+                System.out.println("Reading line: " + line); // Debug: Print the raw line
+                String[] parts = line.split(","); // Split by commas
+                System.out.println("Parsed line: " + Arrays.toString(parts)); // Debug: Print the parsed parts
 
-                if (parts.length == 6){ //Since there are 6 rows on the sample CSV file
+                if (parts.length == 6) { // Ensure there are exactly 6 parts
                     String parcelID = parts[0];
-                    int daysInDepot = Integer.parseInt(parts[1]);
-                    double weight = Double.parseDouble(parts[2]);
-                    String dimensions = parts[3] + "x" + parts[4] + "x" + parts[5];
-
-                    //Creating a parcel object and adding it to the map, assuming every parcel is waiting collection
-                    Parcel parcel = new Parcel(parcelID, dimensions, weight, daysInDepot, "Waiting");
-                    parcelMap.getParcels().put(parcelID, parcel);
-                } else { //won't be needed here due to every line in CSV having 6 parts but good habit to have.
-                    System.out.println("Skipping invalid line: " + line);
+                    Parcel parcel = getParcel(parts, parcelID); // Get the parcel object
+                    parcelMap.getParcels().put(parcelID, parcel); // Add to map
+                    System.out.println("Added Parcel: " + parcel); // Debug: Print the added parcel
+                } else {
+                    System.out.println("Skipping invalid line: " + line); // Debug: Log skipped lines
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading parcels file: " + e.getMessage() );;
-        } catch (NumberFormatException e){
+            System.out.println("Error reading parcels file: " + e.getMessage());
+        } catch (NumberFormatException e) {
             System.out.println("Error parsing a number in the file: " + e.getMessage());
         }
-
     }
+
+    private static Parcel getParcel(String[] parts, String parcelID) {
+        int daysInDepot = Integer.parseInt(parts[1]);
+        double weight = Double.parseDouble(parts[2]);
+        String part3 = parts[3].trim();
+        String part4 = parts[4].trim();
+        String part5 = parts[5].trim();
+        String dimensions = part3 + " x " + part4 + " x " + part5;
+
+        // Return the Parcel object
+        return new Parcel(parcelID, dimensions, weight, daysInDepot, "Waiting");
+    }
+
 
 
 
