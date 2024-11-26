@@ -1,6 +1,5 @@
 package depot.system;
 import java.util.Map;
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("Depot System - Assignment Part 2");
@@ -11,20 +10,22 @@ public class Main {
         Log log = Log.getInstance();
         Manager manager = new Manager(customerQueue, parcelMap, log);
 
-        //open csv file
+        // Paths to CSV files
+        String parcelsFilePath = "resources/Parcels.csv";
         String customersFilePath = "resources/Custs.csv";
-        String parcelFilePath = "resources/Parcels.csv";
 
+        // Read data from files
+        manager.readParcels(parcelsFilePath);
         manager.readCustomers(customersFilePath);
-        for (Customer customer : customerQueue.getListOfCustomer()){
-            System.out.println("Customer in queue " + customer);
-        }
 
+        // Process all customers in the queue
         while (!customerQueue.isEmpty()) {
-            Customer currentCustomer = customerQueue.dequeueCustomer();
-            manager.processCustomer(currentCustomer);
+            Customer customer = customerQueue.dequeueCustomer();
+            manager.processCustomer(customer);
         }
-        System.out.println("Queue is empty: " + customerQueue.isEmpty());
 
+        // Print all log entries
+        System.out.println("Log entries:");
+        System.out.println(log.getLogEntries());
     }
 }

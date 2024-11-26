@@ -48,9 +48,8 @@ public class Manager {
 
        if(parcel != null) {
            parcel.setStatus("Collected");
-
-           log.addLogEntry("Parcel: " + parcelID + " collected by " + customer.getName());
-           System.out.println("Processed parcel: " + parcel);
+           double fee = calculateFee(parcel);
+           log.addLogEntry("Parcel: " + parcelID + " collected by " + customer.getName() + " Fee: £ " + fee);
        }
     }
 
@@ -60,14 +59,14 @@ public class Manager {
             while((line = br.readLine()) !=null) {
                 String[] parts = line.split(","); //csv is split by name "," ID.
 
-                if (parts.length == 2) { // Ensure line has exactly 2 parts
+                if (parts.length == 2) { // Provided CSV has 2 parts
                     String name = parts[0].trim();
                     String parcelID = parts[1].trim();
 
                     // Split name into first and last name
                     String[] nameParts = name.split(" ");
                     if (nameParts.length < 2) {
-                        System.out.println("Skipping invalid customer name: " + name);
+                        log.addLogEntry("Skipping invalid customer name: " + name);
                         continue;
                     }
                     String firstName = nameParts[0];
@@ -81,9 +80,9 @@ public class Manager {
 
                     // Add customer to the queue
                     customerQueue.enqueueCustomer(customer);
-                    System.out.println("Added Customer: " + customer); // Debugging log TODO: delete later
+                    log.addLogEntry("Added Customer: " + customer);
                 } else {
-                    System.out.println("Skipping invalid line: " + line);
+                    log.addLogEntry("Skipping invalid line: " + line);
                 }
             }
         } catch (IOException e) {
@@ -106,15 +105,17 @@ public class Manager {
                     // Creating a parcel object and adding it to the map, assuming every parcel is waiting for collection
                     Parcel parcel = new Parcel(parcelID, dimensions, weight, daysInDepot, "Waiting");
                     parcelMap.getParcels().put(parcelID, parcel);
+                    log.addLogEntry("Added Parcel: " + parcel);
+
                 } else {
                     // Skip lines that don't have exactly 6 parts, unnecessary for the assignment but good habit.
-                    System.out.println("Skipping invalid line: " + line);
+                    log.addLogEntry("Skipping invalid line: " + line);
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading parcels file: " + e.getMessage());
+            log.addLogEntry("Error reading parcels file: " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Error parsing a number in the file: " + e.getMessage());
+            log.addLogEntry("Error parsing a number in the file: " + e.getMessage());
         }
     }
 
