@@ -42,7 +42,17 @@ public class Manager {
 
 
 
+    public void processCustomer(Customer customer){
+        String parcelID = customer.getParcelID();
+        Parcel parcel = parcelMap.getParcels().get(parcelID);
 
+       if(parcel != null) {
+           parcel.setStatus("Collected");
+
+           log.addLogEntry("Parcel: " + parcelID + " collected by " + customer.getName());
+           System.out.println("Processed parcel: " + parcel);
+       }
+    }
 
     public void readCustomers(String filePath){
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

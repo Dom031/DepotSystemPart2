@@ -20,9 +20,9 @@ public class Main {
             System.out.println("Customer in queue " + customer);
         }
 
-        while (!customerQueue.isEmpty()){
-            Customer processedCustomer = customerQueue.dequeueCustomer();
-            System.out.println("Processed customer: " + processedCustomer );
+        while (!customerQueue.isEmpty()) {
+            Customer currentCustomer = customerQueue.dequeueCustomer();
+            manager.processCustomer(currentCustomer);
         }
         System.out.println("Queue is empty: " + customerQueue.isEmpty());
 
