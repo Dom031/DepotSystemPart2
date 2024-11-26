@@ -19,11 +19,19 @@ public class QueueOfCustomer {
     // Add a customer to the queue
     public void enqueueCustomer(Customer customer) {
         listOfCustomer.add(customer);
+        System.out.println("Customer added: " + customer.getName());
     }
 
     // Remove a customer from the queue
     public Customer dequeueCustomer() {
-        return listOfCustomer.poll(); // poll() returns null if empty
+        if (!listOfCustomer.isEmpty()){
+            Customer removedCustomer = listOfCustomer.poll();
+            System.out.println("Customer processed: " + removedCustomer.getName());
+            return removedCustomer;
+        } else {
+            System.out.println("Queue is empty. ");
+            return null;
+        }
     }
 
     // Peek at the next customer
@@ -42,7 +50,5 @@ public class QueueOfCustomer {
                 "listOfCustomer=" + listOfCustomer +
                 '}';
     }
-
-// add methods later
 }
 

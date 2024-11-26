@@ -40,6 +40,10 @@ public class Manager {
         return baseFee + weightFee + storageFee;
     }
 
+
+
+
+
     public void readCustomers(String filePath){
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;

@@ -11,5 +11,20 @@ public class Main {
         Log log = Log.getInstance();
         Manager manager = new Manager(customerQueue, parcelMap, log);
 
+        //open csv file
+        String customersFilePath = "resources/Custs.csv";
+        String parcelFilePath = "resources/Parcels.csv";
+
+        manager.readCustomers(customersFilePath);
+        for (Customer customer : customerQueue.getListOfCustomer()){
+            System.out.println("Customer in queue " + customer);
+        }
+
+        while (!customerQueue.isEmpty()){
+            Customer processedCustomer = customerQueue.dequeueCustomer();
+            System.out.println("Processed customer: " + processedCustomer );
+        }
+        System.out.println("Queue is empty: " + customerQueue.isEmpty());
+
     }
 }
