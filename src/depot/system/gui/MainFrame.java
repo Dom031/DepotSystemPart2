@@ -1,11 +1,16 @@
 package depot.system.gui;
 
+import depot.system.core.Log;
 import depot.system.core.ParcelMap;
-
+import depot.system.core.QueueOfCustomer;
+import depot.system.core.Worker;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+    private QueueOfCustomer customerQueue;
+    private ParcelMap parcelMap;
+    private Log log;
 
     public MainFrame(){
         //frame properties for main window
@@ -23,7 +28,8 @@ public class MainFrame extends JFrame {
         // Panels to the CardLayout (Placeholders for now)
         mainPanel.add(new CustomerPanel(), "CustomerPanel");
         mainPanel.add(new ParcelPanel(parcelMap), "ParcelPanel");
-        //mainPanel.add(new WorkerPanel(), "WorkerPanel");
+        mainPanel.add(new WorkerPanel(customerQueue, parcelMap, log, new Worker("W001", "John")), "WorkerPanel");
+
         //Navigating panels with buttons
         JPanel navPanel = getJPanel(cardLayout, mainPanel);
 
