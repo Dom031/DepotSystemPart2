@@ -1,5 +1,6 @@
 package depot.system.gui;
 
+import depot.system.core.ParcelMap;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,23 +8,36 @@ import java.awt.*;
 public class MainFrame extends JFrame {
 
     public MainFrame(){
-        //frame properties for main frame
+        //frame properties for main window
         setTitle("Depot System GUI");
         setSize(800,800); //w x h
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setLayout(new BorderLayout());
 
         // Main panel with CardLayout
         CardLayout cardLayout = new CardLayout();
         JPanel mainPanel = new JPanel(cardLayout);
+        ParcelMap parcelMap = new ParcelMap();
+
 
         // Panels to the CardLayout (Placeholders for now)
-        mainPanel.add(new JPanel(), "CustomerPanel");
-        mainPanel.add(new JPanel(), "ParcelPanel");
-        mainPanel.add(new JPanel(), "WorkerPanel");
+        mainPanel.add(new CustomerPanel(), "CustomerPanel");
+        mainPanel.add(new ParcelPanel(parcelMap), "ParcelPanel");
+        //mainPanel.add(new WorkerPanel(), "WorkerPanel");
+        //Navigating panels with buttons
+        JPanel navPanel = getJPanel(cardLayout, mainPanel);
 
-        //Buttons for the panels
+
+        add(navPanel, BorderLayout.NORTH);
+        add(mainPanel, BorderLayout.CENTER);
+        setVisible(true);
+
+
+    }
+
+    private static JPanel getJPanel(CardLayout cardLayout, JPanel mainPanel) {
         JPanel navPanel = new JPanel();
+
         JButton customerButton = new JButton("Customer");
         JButton parcelButton = new JButton("Parcel");
         JButton workerButton = new JButton("Worker");
@@ -39,16 +53,12 @@ public class MainFrame extends JFrame {
         navPanel.add(workerButton);
 
 
-        add(navPanel, BorderLayout.NORTH);
-        add(navPanel, BorderLayout.CENTER);
 
+        return navPanel;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            MainFrame frame = new MainFrame();
-            frame.setVisible(true);
-        });
+        SwingUtilities.invokeLater(MainFrame::new);
     }
 
 }
