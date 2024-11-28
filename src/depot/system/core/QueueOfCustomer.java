@@ -19,7 +19,7 @@ public class QueueOfCustomer {
     // Add a customer to the queue
     public void enqueueCustomer(Customer customer) {
         listOfCustomer.add(customer);
-        System.out.println("Customer added: " + customer.getName());
+        //System.out.println("Customer added: " + customer.getName());
     }
 
     // Remove a customer from the queue

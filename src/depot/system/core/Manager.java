@@ -6,9 +6,9 @@ import java.io.IOException;
 // Class to manage interactions between customer queue, parcel map and log.
 public class Manager {
     //References to customer queue, parcel map and log instance.
-    private QueueOfCustomer customerQueue;
-    private ParcelMap parcelMap;
-    private Log log;
+    private static QueueOfCustomer customerQueue;
+    private static ParcelMap parcelMap;
+    private static Log log;
 
     //constructor
     public Manager(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log){
@@ -31,7 +31,7 @@ public class Manager {
         return log;
     }
 
-    public void readCustomers(String filePath){
+    public static void readCustomers(String filePath){
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while((line = br.readLine()) !=null) {
@@ -68,7 +68,7 @@ public class Manager {
         }
     }
 
-    public void readParcels(String filePath) {
+    public static void readParcels(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {

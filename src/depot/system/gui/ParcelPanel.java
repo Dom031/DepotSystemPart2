@@ -15,7 +15,9 @@ public class ParcelPanel extends JPanel{
 
     public ParcelPanel(ParcelMap parcelMap){
         //Table setup and adding to the panel
-        this.parcelMap = this.parcelMap;
+        this.parcelMap = parcelMap;
+        setLayout(new BorderLayout());
+
         tableModel = new DefaultTableModel(new Object[]{"Parcel ID", "Dimensions", "Weight", "Days in Depot", "Status"}, 0);
         parcelTable = new JTable(tableModel);
         JScrollPane tableScrollPane = new JScrollPane(parcelTable);

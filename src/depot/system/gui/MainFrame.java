@@ -1,18 +1,22 @@
 package depot.system.gui;
 
-import depot.system.core.Log;
-import depot.system.core.ParcelMap;
-import depot.system.core.QueueOfCustomer;
-import depot.system.core.Worker;
+import depot.system.core.*;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+    private Manager manager;
     private QueueOfCustomer customerQueue;
     private ParcelMap parcelMap;
     private Log log;
 
-    public MainFrame(){
+    public MainFrame(Manager manager, QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log) {
+        this.manager=manager;
+        this.customerQueue=customerQueue;
+        this.parcelMap=parcelMap;
+        this.log = log;
+
         //frame properties for main window
         setTitle("Depot System GUI");
         setSize(800,800); //w x h
@@ -22,13 +26,12 @@ public class MainFrame extends JFrame {
         // Main panel with CardLayout
         CardLayout cardLayout = new CardLayout();
         JPanel mainPanel = new JPanel(cardLayout);
-        ParcelMap parcelMap = new ParcelMap();
 
 
         // Panels to the CardLayout (Placeholders for now)
         mainPanel.add(new CustomerPanel(), "CustomerPanel");
         mainPanel.add(new ParcelPanel(parcelMap), "ParcelPanel");
-        mainPanel.add(new WorkerPanel(customerQueue, parcelMap, log, new Worker("W001", "John")), "WorkerPanel");
+        mainPanel.add(new WorkerPanel(customerQueue, parcelMap, log, new Worker("W123", "John")), "WorkerPanel");
 
         //Navigating panels with buttons
         JPanel navPanel = getJPanel(cardLayout, mainPanel);
@@ -58,13 +61,6 @@ public class MainFrame extends JFrame {
         navPanel.add(parcelButton);
         navPanel.add(workerButton);
 
-
-
         return navPanel;
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MainFrame::new);
-    }
-
 }
