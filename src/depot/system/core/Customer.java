@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 
 //Class for the Customer in the Depot System Assignment 2.
 

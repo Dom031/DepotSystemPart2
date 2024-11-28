@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 import java.util.Queue;
 import java.util.LinkedList;
 

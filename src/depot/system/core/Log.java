@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 
 import java.io.IOException;
 import java.io.BufferedWriter;

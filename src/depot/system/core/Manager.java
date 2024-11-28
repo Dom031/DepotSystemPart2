@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

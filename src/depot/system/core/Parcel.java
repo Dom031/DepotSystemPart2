@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 
 //Class for Parcel for the Depot System assignment 2.
 

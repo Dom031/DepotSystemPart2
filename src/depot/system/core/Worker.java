@@ -1,4 +1,4 @@
-package depot.system;
+package depot.system.core;
 
 // Class for the Worker in the Depot System Assignment 2.
 public class Worker {
