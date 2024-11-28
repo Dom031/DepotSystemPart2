@@ -30,5 +30,11 @@ public class Main {
         for (Parcel parcel : parcelMap.getCollectedParcels()) {
             System.out.println(parcel);
         }
+        // Save log entries
+        log.saveToFile("output/log_entries.txt");
+
+        // Save collected parcels
+        parcelMap.saveCollectedParcelsToFile("output/collected_parcels.txt");
+
     }
 }

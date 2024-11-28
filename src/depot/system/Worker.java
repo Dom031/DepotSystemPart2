@@ -64,8 +64,10 @@ public class Worker {
             double baseFee = 5.0; // Base fee
             double weightFee = parcel.getWeight() * 0.5;
             double storageFee = parcel.getDaysInDepot() * 0.2;
-            return baseFee + weightFee + storageFee;
+            double totalFee = baseFee + weightFee + storageFee;
+            return parcel.applyDiscount(totalFee);
         }
+
 
     }
 

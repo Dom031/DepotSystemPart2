@@ -108,5 +108,12 @@ public class Parcel {
                 '}';
     }
 
+    public double applyDiscount(double fee) {
+        if (daysInDepot < 2){
+            double discount = fee *0.10; //10% discount if customers pick parcel fast
+            return fee - discount;
+        }
+        return fee;
+    }
 }
 

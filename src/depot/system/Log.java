@@ -1,5 +1,8 @@
 package depot.system;
 
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Log {
     private StringBuilder logEntries; // To store log messages
@@ -29,6 +32,15 @@ public class Log {
     // Getter for log entries
     public String getLogEntries() {
         return logEntries.toString();
+    }
+
+    public void saveToFile(String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+            writer.write(logEntries.toString());
+            System.out.println("Log entries successfully saved to: " + filePath);
+        } catch (IOException e){
+            System.out.println("Error saving log to file " + e.getMessage());
+        }
     }
 
     // Override toString to display logs

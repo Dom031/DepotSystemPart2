@@ -1,4 +1,7 @@
 package depot.system;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +31,18 @@ public class ParcelMap {
     // Getter for collected parcels
     public List<Parcel> getCollectedParcels() {
         return collectedParcels;
+    }
+
+    public void saveCollectedParcelsToFile(String filePath){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+            for (Parcel parcel : getCollectedParcels()){
+                writer.write(parcel.toString());
+                writer.newLine();
+            }
+            System.out.println("Collected parcels saved to: " + filePath);
+        } catch (IOException e){
+            System.out.println("Error saving collected parcels to file: " + e.getMessage());
+        }
     }
 
     @Override
