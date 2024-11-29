@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public class ParcelMap {
-    private Map<String, Parcel> parcels; // Map of Parcel with ID -> Parcel
-    private List<Parcel> collectedParcels; // Separate list for collected parcels
+    private final Map<String, Parcel> parcels; // Map of Parcel with ID -> Parcel
+    private final List<Parcel> collectedParcels; // Separate list for collected parcels
 
     //constructor
     public ParcelMap(){

@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 public class Log {
-    private StringBuilder logEntries; // To store log messages
+    private final StringBuilder logEntries; // To store log messages
     private static Log instance; // Singleton instance
 
     // Private constructor for singleton
@@ -27,11 +27,6 @@ public class Log {
             throw new IllegalArgumentException("Log entry cannot be null or empty.");
         }
         logEntries.append(entry).append("\n");
-    }
-
-    // Getter for log entries
-    public String getLogEntries() {
-        return logEntries.toString();
     }
 
     public void saveToFile(String filePath) {

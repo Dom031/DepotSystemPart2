@@ -41,22 +41,8 @@ public class Parcel {
         return parcelID;
     }
 
-    public void setParcelID(String parcelID) {
-        if (parcelID == null || parcelID.trim().isEmpty()){
-            throw new IllegalArgumentException("ID Cannot be empty");
-        }
-        this.parcelID = parcelID;
-    }
-
     public String getDimensions() {
         return dimensions;
-    }
-
-    public void setDimensions(String dimensions) {
-        if (validateDimensions(dimensions)){
-            throw new IllegalArgumentException(("Dimensions must be in the format 'Length x Width x Height."));
-        }
-        this.dimensions = dimensions;
     }
 
     public double getWeight() {
@@ -72,13 +58,6 @@ public class Parcel {
 
     public int getDaysInDepot() {
         return daysInDepot;
-    }
-
-    public void setDaysInDepot(int daysInDepot) {
-        if (daysInDepot < 0){
-            throw new IllegalArgumentException(("Days in depot can't be negative"));
-        }
-        this.daysInDepot = daysInDepot;
     }
 
     public String getStatus() {

@@ -18,15 +18,14 @@ public class Main {
         String customersFilePath = "resources/Custs.csv";
 
         // Read data from files using Manager
-        manager.readParcels(parcelsFilePath);
-        manager.readCustomers(customersFilePath);
+        Manager.readParcels(parcelsFilePath);
+        Manager.readCustomers(customersFilePath);
 
         // Launch GUI
         new MainFrame(manager, customerQueue, parcelMap, log);
     }
 
 
-    //TODO: Implement saveToFile to GUI.
     //TODO: Polish GUI.
     //TODO: Look at unused functions and delete accordingly.
     //TODO: Implement Javadoc comments for methods and classes and follow code guidelines from Software Techniques

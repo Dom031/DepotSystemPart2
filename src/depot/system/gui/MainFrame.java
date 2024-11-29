@@ -6,16 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private Manager manager;
-    private QueueOfCustomer customerQueue;
-    private ParcelMap parcelMap;
-    private Log log;
 
     public MainFrame(Manager manager, QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log) {
-        this.manager=manager;
-        this.customerQueue=customerQueue;
-        this.parcelMap=parcelMap;
-        this.log = log;
 
         //frame properties for main window
         setTitle("Depot System GUI");

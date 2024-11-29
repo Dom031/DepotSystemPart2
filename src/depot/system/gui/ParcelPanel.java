@@ -9,9 +9,8 @@ import java.awt.*;
 
 
 public class ParcelPanel extends JPanel{
-    private JTable parcelTable;
-    private DefaultTableModel tableModel;
-    private ParcelMap parcelMap;
+    private final DefaultTableModel tableModel;
+    private final ParcelMap parcelMap;
 
     public ParcelPanel(ParcelMap parcelMap){
         //Table setup and adding to the panel
@@ -19,7 +18,7 @@ public class ParcelPanel extends JPanel{
         setLayout(new BorderLayout());
 
         tableModel = new DefaultTableModel(new Object[]{"Parcel ID", "Dimensions", "Weight", "Days in Depot", "Status"}, 0);
-        parcelTable = new JTable(tableModel);
+        JTable parcelTable = new JTable(tableModel);
         JScrollPane tableScrollPane = new JScrollPane(parcelTable);
 
         add(tableScrollPane, BorderLayout.CENTER);

@@ -34,11 +34,6 @@ public class QueueOfCustomer {
         }
     }
 
-    // Peek at the next customer
-    public Customer peekNextCustomer() {
-        return listOfCustomer.peek(); // peek() returns null if empty
-    }
-
     // Check if the queue is empty
     public boolean isEmpty() {
         return listOfCustomer.isEmpty();

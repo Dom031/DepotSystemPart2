@@ -8,9 +8,8 @@ import java.awt.*;
 
 public class CustomerPanel extends JPanel {
 
-    private JList<String> customerList; // List to display customers
-    private DefaultListModel<String> listModel; // Data model for the list
-    private QueueOfCustomer customerQueue;
+    private final DefaultListModel<String> listModel; // Data model for the list
+    private final QueueOfCustomer customerQueue;
 
 
     public CustomerPanel(QueueOfCustomer customerQueue){
@@ -29,7 +28,8 @@ public class CustomerPanel extends JPanel {
         listModel = new DefaultListModel<>();
 
         //Initializing the JList with the model
-        customerList = new JList<>(listModel);
+        // List to display customers
+        JList<String> customerList = new JList<>(listModel);
         customerList.setFont(new Font("Arial", Font.PLAIN,14));
 
         JScrollPane scrollPane = new JScrollPane(customerList);

@@ -2,3 +2,15 @@ Parcel{parcelID='X919', dimensions='7 x 4 x 10', weight=8.0, daysInDepot=5, stat
 Parcel{parcelID='X064', dimensions='1 x 8 x 15', weight=4.0, daysInDepot=8, status='Collected'}
 Parcel{parcelID='X682', dimensions='4 x 4 x 12', weight=6.0, daysInDepot=3, status='Collected'}
 Parcel{parcelID='X780', dimensions='2 x 5 x 12', weight=1.0, daysInDepot=4, status='Collected'}
+Parcel{parcelID='X782', dimensions='2 x 7 x 12', weight=3.0, daysInDepot=5, status='Collected'}
+Parcel{parcelID='X316', dimensions='4 x 0 x 11', weight=5.0, daysInDepot=9, status='Collected'}
+Parcel{parcelID='X278', dimensions='1 x 0 x 11', weight=3.0, daysInDepot=5, status='Collected'}
+Parcel{parcelID='X720', dimensions='1 x 3 x 8', weight=2.0, daysInDepot=4, status='Collected'}
+Parcel{parcelID='X475', dimensions='8 x 1 x 11', weight=3.0, daysInDepot=4, status='Collected'}
+Parcel{parcelID='X386', dimensions='6 x 5 x 9', weight=1.0, daysInDepot=9, status='Collected'}
+Parcel{parcelID='X857', dimensions='6 x 3 x 9', weight=6.0, daysInDepot=2, status='Collected'}
+Parcel{parcelID='X309', dimensions='8 x 5 x 11', weight=2.0, daysInDepot=1, status='Collected'}
+Parcel{parcelID='X733', dimensions='5 x 7 x 11', weight=6.0, daysInDepot=6, status='Collected'}
+Parcel{parcelID='X285', dimensions='3 x 1 x 10', weight=4.0, daysInDepot=1, status='Collected'}
+Parcel{parcelID='X213', dimensions='5 x 2 x 15', weight=8.0, daysInDepot=4, status='Collected'}
+Parcel{parcelID='X009', dimensions='9 x 9 x 7', weight=1.0, daysInDepot=9, status='Collected'}

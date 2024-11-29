@@ -11,14 +11,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WorkerPanel extends JPanel {
-    private JLabel customerLabel;
-    private JLabel parcelLabel;
-    private JButton processButton;
-    private JButton saveParcelsButton;
-    private QueueOfCustomer customerQueue;
-    private ParcelMap parcelMap;
-    private Log log;
-    private Worker worker;
+    private final JLabel customerLabel;
+    private final JLabel parcelLabel;
+    private final QueueOfCustomer customerQueue;
+    private final ParcelMap parcelMap;
+    private final Log log;
+    private final Worker worker;
 
     public WorkerPanel(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log, Worker worker){
         this.customerQueue = customerQueue;
@@ -38,9 +36,9 @@ public class WorkerPanel extends JPanel {
 
         //Buttons in the panel
         JPanel buttonPanel = new JPanel();
-        processButton = new JButton("Process next customer");
+        JButton processButton = new JButton("Process next customer");
         buttonPanel.add(processButton);
-        saveParcelsButton = new JButton("Save Collected Parcels to File");
+        JButton saveParcelsButton = new JButton("Save Collected Parcels to File");
         buttonPanel.add(saveParcelsButton);
         JButton saveLogButton = new JButton("Save Log to File");
         buttonPanel.add(saveLogButton);
