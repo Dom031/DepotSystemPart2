@@ -11,13 +11,10 @@ public class Manager {
     private static Log log;
 
     //constructor
-    public Manager(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log){
-        if (customerQueue == null || parcelMap == null || log == null){
-            throw new IllegalArgumentException("Fields cannot be empty");
-        }
-        this.customerQueue = customerQueue;
-        this.parcelMap = parcelMap;
-        this.log = log;
+    public Manager(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log) {
+        Manager.customerQueue = customerQueue;
+        Manager.parcelMap = parcelMap;
+        Manager.log = log;
     }
 
     //getters
@@ -31,10 +28,11 @@ public class Manager {
         return log;
     }
 
-    public static void readCustomers(String filePath){
+    // Read customers from CSV and add to the queue
+    public static void readCustomers(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while((line = br.readLine()) !=null) {
+            while ((line = br.readLine()) != null) {
                 String[] parts = line.split(","); //csv is split by name "," ID.
 
                 if (parts.length == 2) { // Provided CSV has 2 parts

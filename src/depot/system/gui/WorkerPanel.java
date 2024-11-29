@@ -9,7 +9,6 @@ import depot.system.core.Log;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class WorkerPanel extends JPanel {
     private JLabel customerLabel;
@@ -81,7 +80,6 @@ public class WorkerPanel extends JPanel {
         log.saveToFile(filePath);
         JOptionPane.showMessageDialog(this, "Log successfully saved to: " + filePath, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
-
     private void saveParcelsToFile() {
         // Define the path to the output directory
         String outputDir = "output/";

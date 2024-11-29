@@ -29,7 +29,8 @@ public class MainFrame extends JFrame {
 
 
         // Panels to the CardLayout (Placeholders for now)
-        mainPanel.add(new CustomerPanel(), "CustomerPanel");
+        CustomerPanel customerPanel = new CustomerPanel(customerQueue); // Pass customerQueue to the panel
+        mainPanel.add(customerPanel, "CustomerPanel");
         mainPanel.add(new ParcelPanel(parcelMap), "ParcelPanel");
         mainPanel.add(new WorkerPanel(customerQueue, parcelMap, log, new Worker("W123", "John")), "WorkerPanel");
 

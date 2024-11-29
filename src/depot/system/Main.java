@@ -18,8 +18,9 @@ public class Main {
         String customersFilePath = "resources/Custs.csv";
 
         // Read data from files using Manager
-        Manager.readParcels(parcelsFilePath);
-        Manager.readCustomers(customersFilePath);
+        // Read data from files using Manager
+        manager.readParcels(parcelsFilePath);
+        manager.readCustomers(customersFilePath);
 
         // Launch GUI
         new MainFrame(manager, customerQueue, parcelMap, log);
