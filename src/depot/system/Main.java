@@ -24,4 +24,10 @@ public class Main {
         // Launch GUI
         new MainFrame(manager, customerQueue, parcelMap, log);
     }
+
+
+    //TODO: Implement saveToFile to GUI.
+    //TODO: Polish GUI.
+    //TODO: Look at unused functions and delete accordingly.
+    //TODO: Implement Javadoc comments for methods and classes and follow code guidelines from Software Techniques
 }
