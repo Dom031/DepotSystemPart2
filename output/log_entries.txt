@@ -58,7 +58,14 @@ Added Customer: Customer{sequenceNumber=27, name='Tim Smith', parcelID='X020'}
 Added Customer: Customer{sequenceNumber=28, name='Tony Lawson', parcelID='X086'}
 Added Customer: Customer{sequenceNumber=29, name='Ursula Milton', parcelID='X746'}
 Added Customer: Customer{sequenceNumber=30, name='Viola Nicholson', parcelID='X540'}
-Parcel: X919 collected by Andrew Robertson Fee: £ 10.0
-Parcel: X064 collected by Ann Jones Fee: £ 8.6
-Parcel: X682 collected by Blair Foster Fee: £ 8.6
-Parcel: X780 collected by Bob Dawson Fee: £ 6.3
+Parcel: X919 collected by Andrew Robertson Fee: £10.0
+Parcel: X064 collected by Ann Jones Fee: £8.6
+Parcel: X682 collected by Blair Foster Fee: £8.6
+Parcel: X780 collected by Bob Dawson Fee: £6.3
+Parcel: X782 collected by Chris Smith Fee: £7.5
+Parcel: X316 collected by Dave Jackson Fee: £9.3
+Parcel: X278 collected by David Hunter Fee: £7.5
+Parcel: X720 collected by Donald Murray Fee: £6.8
+Parcel: X475 collected by Fiona Thoms Fee: £7.3
+Parcel: X386 collected by Gillian Hamilton Fee: £7.3
+Parcel: X857 collected by Harry Johnston Fee: £8.4
