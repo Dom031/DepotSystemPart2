@@ -18,7 +18,6 @@ public class Main {
         String customersFilePath = "resources/Custs.csv";
 
         // Read data from files using Manager
-        // Read data from files using Manager
         manager.readParcels(parcelsFilePath);
         manager.readCustomers(customersFilePath);
 

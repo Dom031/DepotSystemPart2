@@ -29,7 +29,7 @@ public class CustomerPanel extends JPanel {
         listModel = new DefaultListModel<>();
 
         //Initializing the JList with the model
-        customerList = new JList<>();
+        customerList = new JList<>(listModel);
         customerList.setFont(new Font("Arial", Font.PLAIN,14));
 
         JScrollPane scrollPane = new JScrollPane(customerList);
@@ -40,6 +40,7 @@ public class CustomerPanel extends JPanel {
         JButton refreshButton = new JButton("Refresh Queue");
         buttonPanel.add(refreshButton);
         add(buttonPanel, BorderLayout.SOUTH);
+
         refreshButton.addActionListener(e-> refreshCustomerList());
 
         refreshCustomerList();
