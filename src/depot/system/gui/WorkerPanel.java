@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 28/11/2024
-Updated: 29/11/2024
+Updated: 30/11/2024
 */
 
 package depot.system.gui;
@@ -23,13 +23,15 @@ import java.awt.*;
  * GUI panel for worker interactions in the Depot System.
  * Provides functionality to process the next customer, save logs, and save collected parcels.
  */
-public class WorkerPanel extends JPanel {
+    public class WorkerPanel extends JPanel {
     private final JLabel customerLabel; // Label to display the current customer
     private final JLabel parcelLabel;   // Label to display the current parcel
     private final QueueOfCustomer customerQueue;
     private final ParcelMap parcelMap;
     private final Log log;
     private final Worker worker;
+    private final CustomerPanel customerPanel;
+    private final ParcelPanel parcelPanel;
 
     /**
      * Constructs a WorkerPanel for managing worker interactions.
@@ -39,7 +41,7 @@ public class WorkerPanel extends JPanel {
      * @param log the log instance for recording actions; cannot be null.
      * @param worker the worker processing the customers and parcels; cannot be null.
      */
-    public WorkerPanel(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log, Worker worker) {
+    public WorkerPanel(QueueOfCustomer customerQueue, ParcelMap parcelMap, Log log, Worker worker, CustomerPanel customerPanel, ParcelPanel parcelPanel) {
         if (customerQueue == null || parcelMap == null || log == null || worker == null) {
             throw new IllegalArgumentException("Arguments cannot be null.");
         }
@@ -48,6 +50,8 @@ public class WorkerPanel extends JPanel {
         this.parcelMap = parcelMap;
         this.log = log;
         this.worker = worker;
+        this.customerPanel = customerPanel;
+        this.parcelPanel = parcelPanel;
 
         // Set layout
         setLayout(new BorderLayout());
@@ -96,6 +100,9 @@ public class WorkerPanel extends JPanel {
         } else {
             parcelLabel.setText("Associated Parcel: Not Found!");
         }
+
+        customerPanel.refreshCustomerList();
+        parcelPanel.refreshParcels();
     }
 
     /**

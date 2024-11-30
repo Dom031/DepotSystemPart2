@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 28/11/2024
-Updated: 29/11/2024
+Updated: 30/11/2024
 */
 
 package depot.system.gui;
@@ -44,11 +44,13 @@ public class MainFrame extends JFrame {
         JPanel mainPanel = new JPanel(cardLayout);
 
         // Panels added to the CardLayout
-        CustomerPanel customerPanel = new CustomerPanel(customerQueue); // Customer panel
-        mainPanel.add(customerPanel, "CustomerPanel");
-        mainPanel.add(new ParcelPanel(parcelMap), "ParcelPanel"); // Parcel panel
-        mainPanel.add(new WorkerPanel(customerQueue, parcelMap, log, new Worker("W123", "John")), "WorkerPanel"); // Worker panel
+        CustomerPanel customerPanel = new CustomerPanel(customerQueue, manager);
+        ParcelPanel parcelPanel = new ParcelPanel(parcelMap, manager);
+        WorkerPanel workerPanel = new WorkerPanel(customerQueue, parcelMap, log, new Worker("W123", "John"), customerPanel, parcelPanel);
 
+        mainPanel.add(customerPanel, "CustomerPanel");
+        mainPanel.add(parcelPanel, "ParcelPanel");
+        mainPanel.add(workerPanel, "WorkerPanel");
         // Navigation panel with buttons to switch views
         JPanel navPanel = createNavPanel(cardLayout, mainPanel);
 

@@ -139,6 +139,69 @@ public class Manager {
     }
 
     /**
+     * Adds a new customer to the queue.
+     * Note: This method updates the in-memory queue or map only.
+     * Changes will not save to the original CSV files as I'm using the template provided
+     * and don't want to overwrite anything.
+     * @param name the name of the customer; must not be null or empty.
+     * @param parcelID the parcel ID associated with the customer; must not be null or empty.
+     */
+    public void addCustomer(String name, String parcelID) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Customer name cannot be null or empty.");
+        }
+        if (parcelID == null || parcelID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Parcel ID cannot be null or empty.");
+        }
+
+        // Generate a sequence number based on the current queue size
+        int sequenceNumber = customerQueue.getListOfCustomer().size() + 1;
+
+        // Create and add the new customer
+        Customer customer = new Customer(sequenceNumber, name, parcelID);
+        customerQueue.enqueueCustomer(customer);
+
+        // Log the addition
+        log.addLogEntry("Added new customer: " + customer);
+    }
+
+    /**
+     * Adds a new parcel to the parcel map.
+     *
+     * @param parcelID the unique ID of the parcel; must not be null or empty.
+     * @param dimensions the dimensions of the parcel in "length x width x height" format; must be valid.
+     * @param weight the weight of the parcel in kilograms; must be non-negative.
+     * @param daysInDepot the number of days the parcel has been in the depot; must be non-negative.
+     * @param status the status of the parcel; must be "Waiting" or "Collected".
+     */
+    public void addParcel(String parcelID, String dimensions, double weight, int daysInDepot, String status) {
+        if (parcelID == null || parcelID.trim().isEmpty()) {
+            throw new IllegalArgumentException("Parcel ID cannot be null or empty.");
+        }
+        if (dimensions == null || !dimensions.matches("\\d+ x \\d+ x \\d+")) {
+            throw new IllegalArgumentException("Invalid dimensions. Use format 'length x width x height'.");
+        }
+        if (weight < 0) {
+            throw new IllegalArgumentException("Parcel weight cannot be negative.");
+        }
+        if (daysInDepot < 0) {
+            throw new IllegalArgumentException("Days in depot cannot be negative.");
+        }
+        if (!status.equals("Waiting") && !status.equals("Collected")) {
+            throw new IllegalArgumentException("Parcel status must be 'Waiting' or 'Collected'.");
+        }
+
+        // Create and add the new parcel
+        Parcel parcel = new Parcel(parcelID, dimensions, weight, daysInDepot, status);
+        parcelMap.getParcels().put(parcelID, parcel);
+
+        // Log the addition
+        log.addLogEntry("Added new parcel: " + parcel);
+    }
+
+
+
+    /**
      * Returns a string representation of the Manager's state.
      *
      * @return the string representation of the customer queue, parcel map, and log.
