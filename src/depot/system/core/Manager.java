@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 22/11/2024
-Updated: 29/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.core;
@@ -17,6 +17,7 @@ import java.io.IOException;
  * Manages interactions between the customer queue, parcel map, and log.
  * Provides functionality to read customers and parcels from CSV files
  * and update the corresponding data structures.
+ * This class is the controller, operating the main functiosn of the system
  */
 public class Manager {
     // References to customer queue, parcel map, and log instance.
@@ -66,6 +67,8 @@ public class Manager {
 
     /**
      * Reads customer data from a CSV file and adds valid customers to the queue.
+     * Invalid entries are logged and skipped. The CSV format is following the template given by
+     * the tutor with 2 columns: Customer name and Parcel ID.
      *
      * @param filePath the path to the CSV file containing customer data.
      */
@@ -82,7 +85,7 @@ public class Manager {
                     // Split name into first and last name
                     String[] nameParts = name.split(" ");
                     if (nameParts.length < 2) {
-                        log.addLogEntry("Skipping invalid customer name: " + name);
+                        log.addLogEntry("ADD_CUSTOMER","Skipping invalid customer name: " + name);
                         continue;
                     }
                     String firstName = nameParts[0];
@@ -96,9 +99,12 @@ public class Manager {
 
                     // Add customer to the queue
                     customerQueue.enqueueCustomer(customer);
-                    log.addLogEntry("Added Customer: " + customer);
+                    log.addLogEntry("ADD_CUSTOMER", String.format(
+                            "Added Customer: Name=%s, Parcel ID=%s",
+                            customer.getName(), customer.getParcelID()
+                    ));
                 } else {
-                    log.addLogEntry("Skipping invalid line: " + line);
+                    log.addLogEntry("ADD_CUSTOMER","Skipping invalid line: " + line);
                 }
             }
         } catch (IOException e) {
@@ -126,15 +132,18 @@ public class Manager {
                     // Create a Parcel object and add it to the map
                     Parcel parcel = new Parcel(parcelID, dimensions, weight, daysInDepot, "Waiting");
                     parcelMap.getParcels().put(parcelID, parcel);
-                    log.addLogEntry("Added Parcel: " + parcel);
+                    log.addLogEntry("ADD_PARCEL", String.format(
+                            "Added Parcel: ID=%s, Dimensions=%s, Weight=%.1fkg, Days in Depot=%d, Status=%s",
+                            parcel.getParcelID(), parcel.getDimensions(), parcel.getWeight(), parcel.getDaysInDepot(), parcel.getStatus()
+                    ));
                 } else {
-                    log.addLogEntry("Skipping invalid line: " + line);
+                    log.addLogEntry("ADD_PARCEL","Skipping invalid line: " + line);
                 }
             }
         } catch (IOException e) {
-            log.addLogEntry("Error reading parcels file: " + e.getMessage());
+            log.addLogEntry("ADD_PARCEL","Error reading parcels file: " + e.getMessage());
         } catch (NumberFormatException e) {
-            log.addLogEntry("Error parsing a number in the file: " + e.getMessage());
+            log.addLogEntry("ADD_PARCEL","Error parsing a number in the file: " + e.getMessage());
         }
     }
 
@@ -162,11 +171,17 @@ public class Manager {
         customerQueue.enqueueCustomer(customer);
 
         // Log the addition
-        log.addLogEntry("Added new customer: " + customer);
+        log.addLogEntry("ADD_CUSTOMER", String.format(
+                "Added Customer: Name=%s, Parcel ID=%s",
+                customer.getName(), customer.getParcelID()
+        ));
     }
 
     /**
      * Adds a new parcel to the parcel map.
+     * Note: This method updates the in-memory queue or map only.
+     * Changes will not save to the original CSV files as I'm using the template provided
+     * and don't want to overwrite anything.
      *
      * @param parcelID the unique ID of the parcel; must not be null or empty.
      * @param dimensions the dimensions of the parcel in "length x width x height" format; must be valid.
@@ -196,8 +211,10 @@ public class Manager {
         parcelMap.getParcels().put(parcelID, parcel);
 
         // Log the addition
-        log.addLogEntry("Added new parcel: " + parcel);
-    }
+        log.addLogEntry("ADD_PARCEL", String.format(
+                "Added Parcel: ID=%s, Dimensions=%s, Weight=%.1fkg, Days in Depot=%d, Status=%s",
+                parcel.getParcelID(), parcel.getDimensions(), parcel.getWeight(), parcel.getDaysInDepot(), parcel.getStatus()
+        ));    }
 
 
 

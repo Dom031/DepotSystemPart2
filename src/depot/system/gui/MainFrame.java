@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 28/11/2024
-Updated: 30/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.gui;
@@ -22,6 +22,8 @@ public class MainFrame extends JFrame {
 
     /**
      * Constructs the main frame for the Depot System GUI.
+     * Initialzes and adds panels for customers, parcels and workers and provides
+     * navigation bertween these panels.
      *
      * @param manager the manager instance to manage interactions; not currently used directly in this frame.
      * @param customerQueue the queue of customers; cannot be null.

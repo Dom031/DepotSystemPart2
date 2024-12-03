@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 22/11/2024
-Updated: 29/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.core;
@@ -71,9 +71,9 @@ public class ParcelMap {
      */
     public void saveCollectedParcelsToFile(String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("=== Collected Parcels ===\n");
             for (Parcel parcel : getCollectedParcels()) {
-                writer.write(parcel.toString());
-                writer.newLine();
+                writer.write(parcel.toString() + "\n");
             }
             System.out.println("Collected parcels saved to: " + filePath);
         } catch (IOException e) {

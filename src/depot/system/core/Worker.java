@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 19/11/2024
-Updated: 26/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.core;
@@ -49,7 +49,10 @@ public class Worker {
         if (parcel != null) {
             parcel.setStatus("Collected");
             double fee = calculateFee(parcel);
-            log.addLogEntry("Parcel: " + parcelID + " collected by " + customer.getName() + " Fee: £" + fee);
+            log.addLogEntry("PROCESS_PARCEL", String.format(
+                    "Parcel: %s collected by %s, Fee: £%.2f",
+                    parcelID, customer.getName(), fee
+            ));
 
             parcelMap.addToCollectedParcels(parcel);
         }
@@ -57,7 +60,8 @@ public class Worker {
 
     /**
      * Calculates the total fee for a parcel based on its weight, storage time,
-     * and any applicable discounts.
+     * and any applicable discounts. The fees are combined and
+     * any discounts are applied by a separated function based on the days in depot.
      *
      * @param parcel the parcel for which the fee is calculated.
      * @return the total fee after applying discounts.

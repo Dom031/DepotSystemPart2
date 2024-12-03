@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 28/11/2024
-Updated: 30/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.gui;
@@ -77,12 +77,16 @@ import java.awt.*;
         // Add action listeners
         processButton.addActionListener(e -> processNextCustomer());
         saveParcelsButton.addActionListener(e -> saveParcelsToFile());
-        saveLogButton.addActionListener(e -> saveLogToFile());
+        saveLogButton.addActionListener(e -> saveAllLogsToFiles());
     }
 
     /**
      * Processes the next customer in the queue.
      * Updates the customer and parcel labels and processes the parcel associated with the customer.
+     *  Logs the transaction and refrehes the customer and parcel panels and if
+     *  no associated parcel is found, it shows an error message.
+     *  Not applicable in this scenario as the CSV matches completely.
+     *
      */
     private void processNextCustomer() {
         if (customerQueue.isEmpty()) {
@@ -95,7 +99,9 @@ import java.awt.*;
 
         Parcel parcel = parcelMap.getParcels().get(customer.getParcelID());
         if (parcel != null) {
-            parcelLabel.setText("Associated Parcel: " + parcel);
+            parcelLabel.setText(String.format("Associated Parcel: ID=%s, Dimensions=%s, Weight=%.1fkg, Days in Depot=%d, Status=%s",
+                    parcel.getParcelID(), parcel.getDimensions(), parcel.getWeight(), parcel.getDaysInDepot(), parcel.getStatus()));
+
             worker.processCustomer(customer, parcelMap, log); // Process customer and update parcel
         } else {
             parcelLabel.setText("Associated Parcel: Not Found!");
@@ -106,14 +112,14 @@ import java.awt.*;
     }
 
     /**
-     * Saves the log to a file in the output directory.
+     * Saves the log entries in separated files for general, parcel and customer logs
+     * in the output directory.
      * Displays a confirmation message upon successful save.
      */
-    private void saveLogToFile() {
-        String outputDir = "output/";
-        String filePath = outputDir + "log_entries.txt";
-        log.saveToFile(filePath);
-        JOptionPane.showMessageDialog(this, "Log successfully saved to: " + filePath, "Info", JOptionPane.INFORMATION_MESSAGE);
+    private void saveAllLogsToFiles() {
+        String baseFilePath = "output/log_entries";
+        log.saveToFile(baseFilePath);
+        JOptionPane.showMessageDialog(this, "Logs successfully saved to multiple files.", "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

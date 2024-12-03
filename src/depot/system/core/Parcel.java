@@ -11,8 +11,13 @@ package depot.system.core;
 
 /**
  * Represents a parcel in the Depot System.
- * Stores details about the parcel, such as its ID, dimensions, weight,
- * number of days in the depot, and status.
+ * Stores essential details about the parcel, such as:
+ * - Parcel ID
+ * - Dimensions (length x width x height)
+ * - Weight in kilograms
+ * - Days in the depot
+ * - Status ("Waiting" or "Collected").
+ *
  */
 public class Parcel {
     private String parcelID;
@@ -26,8 +31,8 @@ public class Parcel {
      *
      * @param parcelID the unique ID of the parcel; cannot be null or empty.
      * @param dimensions the dimensions of the parcel in the format 'length x width x height'; must be valid.
-     * @param weight the weight of the parcel in kilograms; must be non-negative.
-     * @param daysInDepot the number of days the parcel has been in the depot; must be non-negative.
+     * @param weight the weight of the parcel in kilograms; must be a positive number.
+     * @param daysInDepot the number of days the parcel has been in the depot; must be a positive number.
      * @param status the status of the parcel; must be "Waiting" or "Collected".
      * @throws IllegalArgumentException if any parameter does not meet its constraints.
      */
@@ -127,9 +132,10 @@ public class Parcel {
 
     /**
      * Applies a discount to a given fee based on the number of days in the depot.
-     *
+     * If the parcel has been in the depot for less than 2 days, a 10% discount is applied.
      * @param fee the original fee.
      * @return the discounted fee if the parcel is picked up within 2 days; otherwise, the original fee.
+     * @throws IllegalArgumentException if the fee is negative.
      */
     public double applyDiscount(double fee) {
         if (daysInDepot < 2) {
@@ -140,9 +146,9 @@ public class Parcel {
     }
 
     /**
-     * Validates the dimensions string.
+     * Validates the dimensions string for the parcel.
      *
-     * @param dimensions the dimensions string to validate.
+     * @param dimensions the dimensions string to validate in the format length x width x height.
      * @return true if the dimensions are invalid, false otherwise.
      */
     private boolean validateDimensions(String dimensions) {
@@ -152,16 +158,12 @@ public class Parcel {
     /**
      * Returns a string representation of the Parcel object.
      *
-     * @return a string in the format "Parcel{parcelID=..., dimensions=..., weight=..., daysInDepot=..., status=...}".
+     * @return a string in the format "ID=..., Dimensions=..., Weight=...kg, Days in Depot=..., Status=...".
      */
     @Override
     public String toString() {
-        return "Parcel{" +
-                "parcelID='" + parcelID + '\'' +
-                ", dimensions='" + dimensions + '\'' +
-                ", weight=" + weight +
-                ", daysInDepot=" + daysInDepot +
-                ", status='" + status + '\'' +
-                '}';
+        return String.format("ID=%s, Dimensions=%s, Weight=%.1fkg, Days in Depot=%d, Status=%s",
+                parcelID, dimensions, weight, daysInDepot, status);
     }
+
 }

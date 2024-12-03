@@ -1,11 +1,31 @@
-Parcel{parcelID='X919', dimensions='7 x 4 x 10', weight=8.0, daysInDepot=5, status='Collected'}
-Parcel{parcelID='X064', dimensions='1 x 8 x 15', weight=4.0, daysInDepot=8, status='Collected'}
-Parcel{parcelID='X682', dimensions='4 x 4 x 12', weight=6.0, daysInDepot=3, status='Collected'}
-Parcel{parcelID='X780', dimensions='2 x 5 x 12', weight=1.0, daysInDepot=4, status='Collected'}
-Parcel{parcelID='X782', dimensions='2 x 7 x 12', weight=3.0, daysInDepot=5, status='Collected'}
-Parcel{parcelID='X316', dimensions='4 x 0 x 11', weight=5.0, daysInDepot=9, status='Collected'}
-Parcel{parcelID='X278', dimensions='1 x 0 x 11', weight=3.0, daysInDepot=5, status='Collected'}
-Parcel{parcelID='X720', dimensions='1 x 3 x 8', weight=2.0, daysInDepot=4, status='Collected'}
-Parcel{parcelID='X475', dimensions='8 x 1 x 11', weight=3.0, daysInDepot=4, status='Collected'}
-Parcel{parcelID='X386', dimensions='6 x 5 x 9', weight=1.0, daysInDepot=9, status='Collected'}
-Parcel{parcelID='X857', dimensions='6 x 3 x 9', weight=6.0, daysInDepot=2, status='Collected'}
+=== Collected Parcels ===
+ID=X919, Dimensions=7 x 4 x 10, Weight=8.0kg, Days in Depot=5, Status=Collected
+ID=X064, Dimensions=1 x 8 x 15, Weight=4.0kg, Days in Depot=8, Status=Collected
+ID=X682, Dimensions=4 x 4 x 12, Weight=6.0kg, Days in Depot=3, Status=Collected
+ID=X780, Dimensions=2 x 5 x 12, Weight=1.0kg, Days in Depot=4, Status=Collected
+ID=X782, Dimensions=2 x 7 x 12, Weight=3.0kg, Days in Depot=5, Status=Collected
+ID=X316, Dimensions=4 x 0 x 11, Weight=5.0kg, Days in Depot=9, Status=Collected
+ID=X278, Dimensions=1 x 0 x 11, Weight=3.0kg, Days in Depot=5, Status=Collected
+ID=X720, Dimensions=1 x 3 x 8, Weight=2.0kg, Days in Depot=4, Status=Collected
+ID=X475, Dimensions=8 x 1 x 11, Weight=3.0kg, Days in Depot=4, Status=Collected
+ID=X386, Dimensions=6 x 5 x 9, Weight=1.0kg, Days in Depot=9, Status=Collected
+ID=X857, Dimensions=6 x 3 x 9, Weight=6.0kg, Days in Depot=2, Status=Collected
+ID=X309, Dimensions=8 x 5 x 11, Weight=2.0kg, Days in Depot=1, Status=Collected
+ID=X733, Dimensions=5 x 7 x 11, Weight=6.0kg, Days in Depot=6, Status=Collected
+ID=X285, Dimensions=3 x 1 x 10, Weight=4.0kg, Days in Depot=1, Status=Collected
+ID=X213, Dimensions=5 x 2 x 15, Weight=8.0kg, Days in Depot=4, Status=Collected
+ID=X009, Dimensions=9 x 9 x 7, Weight=1.0kg, Days in Depot=9, Status=Collected
+ID=X904, Dimensions=4 x 9 x 15, Weight=1.0kg, Days in Depot=4, Status=Collected
+ID=X552, Dimensions=7 x 8 x 12, Weight=5.0kg, Days in Depot=4, Status=Collected
+ID=X121, Dimensions=2 x 3 x 6, Weight=7.0kg, Days in Depot=3, Status=Collected
+ID=X025, Dimensions=4 x 9 x 9, Weight=1.0kg, Days in Depot=7, Status=Collected
+ID=X198, Dimensions=8 x 0 x 10, Weight=4.0kg, Days in Depot=9, Status=Collected
+ID=X521, Dimensions=4 x 4 x 8, Weight=4.0kg, Days in Depot=6, Status=Collected
+ID=X036, Dimensions=6 x 9 x 12, Weight=4.0kg, Days in Depot=8, Status=Collected
+ID=X606, Dimensions=4 x 2 x 13, Weight=8.0kg, Days in Depot=8, Status=Collected
+ID=X214, Dimensions=1 x 1 x 15, Weight=8.0kg, Days in Depot=1, Status=Collected
+ID=X507, Dimensions=9 x 8 x 13, Weight=3.0kg, Days in Depot=5, Status=Collected
+ID=X020, Dimensions=6 x 4 x 14, Weight=1.0kg, Days in Depot=1, Status=Collected
+ID=X086, Dimensions=1 x 7 x 13, Weight=4.0kg, Days in Depot=7, Status=Collected
+ID=X746, Dimensions=9 x 5 x 7, Weight=4.0kg, Days in Depot=4, Status=Collected
+ID=X540, Dimensions=5 x 4 x 5, Weight=2.0kg, Days in Depot=9, Status=Collected

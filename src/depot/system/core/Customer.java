@@ -62,14 +62,11 @@ public class Customer {
     /**
      * Returns a string representation of the Customer object.
      *
-     * @return a string in the format "Customer{sequenceNumber=..., name=..., parcelID=...}".
+     * @return a string in the format "Name=... , Parcel ID = ...".
      */
     @Override
     public String toString() {
-        return "Customer{" +
-                "sequenceNumber=" + sequenceNumber +
-                ", name='" + name + '\'' +
-                ", parcelID='" + parcelID + '\'' +
-                '}';
+        return String.format("Name=%s, Parcel ID=%s", name, parcelID);
     }
+
 }

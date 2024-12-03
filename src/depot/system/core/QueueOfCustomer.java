@@ -4,7 +4,7 @@ Author: Domingos Neto <dn22aau@herts.ac.uk>
 Module: 6COM2013-0901-2024 - Software Architecture
 Tutor: Dr. John Kanyaru
 Created: 19/11/2024
-Updated: 28/11/2024
+Updated: 03/12/2024
 */
 
 package depot.system.core;
@@ -52,9 +52,7 @@ public class QueueOfCustomer {
      */
     public Customer dequeueCustomer() {
         if (!listOfCustomer.isEmpty()) {
-            Customer removedCustomer = listOfCustomer.poll();
-            System.out.println("Customer processed: " + removedCustomer.getName());
-            return removedCustomer;
+            return listOfCustomer.poll();
         } else {
             System.out.println("Queue is empty.");
             return null;
