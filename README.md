@@ -58,3 +58,5 @@ The Parcel Depot System manages parcel tracking and customer interactions in a s
    ```bash
    git clone https://github.com/yourusername/parcel-depot-system.git
    cd parcel-depot-system
+2. Compile and run the Java files using your IDE or CLI
+   
