@@ -1,43 +1,60 @@
-# Parcel Depot System
+# 📦 Parcel Depot System
 
-This project is part of an assignment for Software Architecture, demonstrating the design and implementation of a parcel depot system.
+A Java-based simulation of parcel management in a depot, designed as part of a **Software Architecture** module. This project demonstrates the use of **three-tier architecture**, **object-oriented design**, and **design patterns** such as Singleton and MVC.
 
-## **Description**
+---
 
-The Parcel Depot System simulates the process of managing parcels in a depot, including recording, collecting, and reporting parcel statuses. The implementation adheres to a three-tier architecture and applies design patterns such as Singleton and MVC.
+## 🧾 Overview
 
-## **Features**
+The Parcel Depot System manages parcel tracking and customer interactions in a simulated environment. It processes real-time queues of customers, handles parcel collections, calculates fees, and logs events — all while maintaining separation of concerns via clean architecture.
 
-- Initialize customer and parcel data from files.
-- Process customer parcel collections and update statuses.
-- Calculate collection fees based on parcel attributes.
-- Generate reports of collected and uncollected parcels.
-- Log system events using a Singleton Log class.
+---
 
-## **Project Structure**
+## 🚀 Features
 
-### **Packages**
+- 📂 **File-Based Initialization** – Loads parcel and customer data from input files.
+- 🧑‍💼 **Customer Queue Simulation** – Simulates parcel collection by customers.
+- 💰 **Dynamic Fee Calculation** – Computes charges based on parcel attributes.
+- 📊 **Report Generation** – Outputs reports of collected and uncollected parcels.
+- 📝 **Event Logging** – Uses a Singleton `Log` class to track system activity.
 
-- `depot.system`: Contains the main classes for the application.
+---
 
-### **Key Classes**
+## 🧱 Project Structure
 
-- `Parcel`: Represents a parcel with attributes like ID, dimensions, weight, etc.
-- `Customer`: Represents a customer collecting parcels.
-- `QueueofCustomer`: Manages the queue of customers.
-- `ParcelMap`: Stores and retrieves parcels efficiently.
-- `Log`: Singleton class for logging system events.
-- `Manager`: Central coordinator for system processes.
+### 🔸 Packages
+- `depot.system` — Core application logic and data classes.
 
-### **Design Patterns**
+### 🔹 Key Classes
+| Class           | Purpose |
+|----------------|---------|
+| `Parcel`        | Stores parcel data like ID, size, and weight. |
+| `Customer`      | Represents a customer collecting parcels. |
+| `QueueofCustomer` | Manages customer queue and order of processing. |
+| `ParcelMap`     | Efficient storage and retrieval of parcels. |
+| `Log`           | Singleton logger for event tracking. |
+| `Manager`       | Controls the system's flow and coordination. |
 
-- **Singleton Pattern**: Implemented in the `Log` class.
-- **MVC**: Applied for structuring the GUI (to be implemented).
+---
 
-## **How to Run**
+## 🧠 Design Patterns
 
-1. Clone the repository:
+- ✅ **Singleton Pattern** — Implemented in the `Log` class for centralized logging.  
+- ✅ **MVC Architecture** — Used to support GUI design principles (GUI phase not yet implemented).
+
+---
+
+## 🧪 What I Learned
+
+- Structuring Java programs using **modular architecture**
+- Applying **design patterns** in a real-world simulation
+- Managing input/output and program flow in a backend-focused Java system
+
+---
+
+## 🛠️ How to Run
+
+1. Clone the repo:
    ```bash
    git clone https://github.com/yourusername/parcel-depot-system.git
    cd parcel-depot-system
-   ```
