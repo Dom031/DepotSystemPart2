@@ -20,6 +20,16 @@ The Parcel Depot System manages parcel tracking and customer interactions in a s
 
 ---
 
+## 🛠 Tech Stack
+| Technology | Purpose |
+|------------|---------|
+| **Java** | Core application logic |
+| **Singleton Pattern** | Centralized logging system |
+| **MVC Architecture** | Separation of concerns |
+| **File I/O** | Load and store parcel/customer data |
+
+---
+
 ## 🧱 Project Structure
 
 ### 🔸 Packages
@@ -49,6 +59,13 @@ The Parcel Depot System manages parcel tracking and customer interactions in a s
 - Structuring Java programs using **modular architecture**
 - Applying **design patterns** in a real-world simulation
 - Managing input/output and program flow in a backend-focused Java system
+
+---
+
+## 📷 Screenshots
+![Customer Queue](screenshots/Customer-Queue.png)
+![Parcel List](screenshots/Parcel-List.png)
+![Processing Queue](screenshots/Processing-Parcels.png)
 
 ---
 
